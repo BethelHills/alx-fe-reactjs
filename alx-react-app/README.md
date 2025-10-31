@@ -1,4 +1,50 @@
-# React + Vite
+# ALX React App
+
+This is a React application built with Vite, showcasing various React components and concepts learned in the ALX frontend program.
+
+## Features
+
+- WelcomeMessage component with JSX modifications
+- Header, MainContent, and Footer components
+- UserProfile component demonstrating props
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+### Build
+
+```bash
+npm run build
+```
+
+## Deployment
+
+### Deploy to Vercel
+
+1. Install Vercel CLI: `npm install -g vercel`
+2. Run: `vercel`
+3. Follow the prompts to deploy
+
+### Deploy to Netlify
+
+1. Build the project: `npm run build`
+2. Install Netlify CLI: `npm install -g netlify-cli`
+3. Run: `netlify deploy --prod --dir=dist`
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
