@@ -36,8 +36,8 @@ function Counter() {
       <h3 style={{ margin: 0 }}>Counter</h3>
       <p style={countStyle}>{count}</p>
       <div style={buttonRow}>
-        <button onClick={decrement} aria-label="decrement">-</button>
-        <button onClick={increment} aria-label="increment">+</button>
+        <button onClick={decrement} aria-label="decrement">Decrement</button>
+        <button onClick={increment} aria-label="increment">Increment</button>
         <button onClick={reset} aria-label="reset">Reset</button>
       </div>
     </div>
