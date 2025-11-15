@@ -31,9 +31,15 @@ function App() {
     border: '1px solid #ddd'
   };
 
+  const containerStyle = {
+    minHeight: '100vh',
+    backgroundColor: '#ffffff',
+    padding: '20px'
+  };
+
   return (
     <BrowserRouter>
-      <div>
+      <div style={containerStyle}>
         <nav style={navStyle}>
           <Link to="/" style={linkStyle}>Home</Link>
           <Link to="/favorites" style={linkStyle}>Favorites</Link>
