@@ -15,4 +15,21 @@ export async function fetchUserData(username){
   return resp.data
 }
 
-export default { fetchUserData }
+// Advanced search using GitHub Search API. `filters` can include { q, location, repos }
+export async function searchUsers({q, location, minRepos}, page = 1, per_page = 30){
+  // Build the search query
+  let query = q || ''
+  if (location) query += ` location:${location}`
+  if (minRepos) query += ` repos:>=${minRepos}`
+
+  const params = {
+    q: query.trim(),
+    page,
+    per_page
+  }
+
+  const resp = await API.get('/search/users', { params })
+  return resp.data
+}
+
+export default { fetchUserData, searchUsers }
