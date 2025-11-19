@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import GitHubService from '../services/github'
+import { fetchUserData } from '../services/githubService'
 import UserCard from './UserCard'
+import SearchInput from './SearchInput'
 
 export default function GitHubSearch(){
   const [query, setQuery] = useState('')
@@ -15,10 +17,12 @@ export default function GitHubSearch(){
     setError(null)
     setUser(null)
     try{
-      const data = await GitHubService.getUser(query)
+      // Prefer the explicit fetchUserData service
+      const data = await fetchUserData(query)
       setUser(data)
     }catch(err){
-      setError(err.message || 'Failed to fetch user')
+      // Show the required error message
+      setError('Looks like we cant find the user')
     }finally{
       setLoading(false)
     }
@@ -26,19 +30,16 @@ export default function GitHubSearch(){
 
   return (
     <div style={{maxWidth:640, margin:'0 auto'}}>
-      <form onSubmit={handleSearch} style={{display:'flex', gap:8, marginBottom:12}}>
-        <input
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="Enter GitHub username"
-          style={{flex:1, padding:8, fontSize:16}}
-        />
-        <button type="submit" style={{padding:'8px 12px'}}>Search</button>
-      </form>
+      <SearchInput
+        value={query}
+        onChange={setQuery}
+        onSubmit={handleSearch}
+        placeholder="Enter GitHub username"
+      />
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{color:'crimson'}}>{error}</p>}
-      {user && <UserCard user={user} />}
+  {loading && <p>Loading...</p>}
+  {error && <p style={{color:'crimson'}}>{error}</p>}
+  {user && <UserCard user={user} />}
     </div>
   )
 }
