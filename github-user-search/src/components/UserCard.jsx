@@ -24,7 +24,7 @@ export default function UserCard({user}){
 
   return (
     <div className="border p-3 rounded flex gap-3 items-center">
-      <img src={u.avatar_url} alt="avatar" style={{width:72, height:72, borderRadius:8}} />
+      <img src={u.avatar_url} alt={`${u.login || 'user'} avatar`} loading="lazy" width="72" height="72" style={{width:72, height:72, borderRadius:8}} />
       <div>
         <h2 className="text-lg font-semibold">{u.name || u.login}</h2>
         {u.bio && <p className="text-sm text-gray-700">{u.bio}</p>}
