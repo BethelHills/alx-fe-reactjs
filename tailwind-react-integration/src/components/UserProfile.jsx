@@ -2,8 +2,8 @@ import React from "react";
 
 function UserProfile() {
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-      <div className="md:flex items-center p-6">
+    <div className="user-profile bg-gray-100 p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg">
+      <div className="md:flex items-center">
         <img
           className="h-24 w-24 rounded-full mx-auto md:mx-0 md:mr-6 object-cover border-2 border-indigo-500"
           src="https://via.placeholder.com/150"
