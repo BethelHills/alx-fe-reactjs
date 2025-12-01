@@ -3,18 +3,58 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300x200.png?text=Carbonara"
+    "image": "https://via.placeholder.com/300x200.png?text=Carbonara",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta or bacon",
+      "2 large eggs",
+      "50g Pecorino Romano (grated)",
+      "Salt and freshly ground black pepper"
+    ],
+    "instructions": [
+      "Cook the spaghetti in salted boiling water until al dente.",
+      "Fry the pancetta until crispy.",
+      "Beat eggs with most of the cheese and season generously with pepper.",
+      "Drain pasta and quickly toss with pancetta and egg-cheese mixture off the heat to create a creamy sauce.",
+      "Serve immediately with remaining cheese on top."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/300x200.png?text=Tikka+Masala"
+    "image": "https://via.placeholder.com/300x200.png?text=Tikka+Masala",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "1 cup yogurt",
+      "2 tbsp tikka masala spice mix",
+      "1 onion, chopped",
+      "400g canned tomatoes",
+      "100ml cream",
+      "2 tbsp butter"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and tikka spice, then grill or pan-fry until cooked.",
+      "Sauté onions in butter, add tomatoes and simmer to form a sauce.",
+      "Stir in cream and cooked chicken, simmer for a few minutes.",
+      "Garnish with cilantro and serve with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Simple and healthy avocado on toasted bread with a sprinkle of chili flakes.",
-    "image": "https://via.placeholder.com/300x200.png?text=Avocado+Toast"
+    "image": "https://via.placeholder.com/300x200.png?text=Avocado+Toast",
+    "ingredients": [
+      "2 slices of bread, toasted",
+      "1 ripe avocado",
+      "Salt, pepper, and chili flakes to taste",
+      "Lemon juice"
+    ],
+    "instructions": [
+      "Mash avocado with lemon juice, salt and pepper.",
+      "Spread on toast and sprinkle chili flakes.",
+      "Serve immediately."
+    ]
   }
 ]
