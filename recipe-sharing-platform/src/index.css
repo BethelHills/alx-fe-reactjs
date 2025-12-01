@@ -32,10 +32,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* ...existing CSS (preserved) ... */
 }
 
