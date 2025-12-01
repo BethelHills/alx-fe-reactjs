@@ -6,22 +6,25 @@ export default function AddRecipeForm() {
   const [ingredients, setIngredients] = useState('')
   const [instructions, setInstructions] = useState('')
   const [error, setError] = useState(null)
+  const [errors, setErrors] = useState({})
   const navigate = useNavigate()
 
   function validate() {
-    if (!title.trim()) return 'Title is required.'
+  const newErrors = {}
+  if (!title.trim()) newErrors.title = 'Title is required.'
   const ings = ingredients.split('\n').map((s) => s.trim()).filter(Boolean)
-  if (ings.length === 0) return 'Please provide at least one ingredient.'
-  if (ings.length < 2) return 'Please provide at least two ingredients.'
-    if (!instructions.trim()) return 'Please provide at least one instruction step.'
-    return null
+  if (ings.length === 0) newErrors.ingredients = 'Please provide at least one ingredient.'
+  else if (ings.length < 2) newErrors.ingredients = 'Please provide at least two ingredients.'
+  if (!instructions.trim()) newErrors.instructions = 'Please provide at least one instruction step.'
+  setErrors(newErrors)
+  return Object.keys(newErrors).length ? newErrors : null
   }
 
   function handleSubmit(e) {
     e.preventDefault()
     const err = validate()
     if (err) {
-      setError(err)
+      setError('Please fix errors before submitting.')
       return
     }
 
@@ -60,10 +63,14 @@ export default function AddRecipeForm() {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Title</label>
               <input
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => {
+                  setTitle(e.target.value)
+                  if (errors.title) setErrors((s) => ({ ...s, title: undefined }))
+                }}
                 className="mt-1 block w-full rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="e.g. Spaghetti Carbonara"
               />
+              {errors.title && <div className="text-red-600 text-sm mt-1">{errors.title}</div>}
             </div>
 
             <div>
@@ -73,11 +80,15 @@ export default function AddRecipeForm() {
               </div>
               <textarea
                 value={ingredients}
-                onChange={(e) => setIngredients(e.target.value)}
+                onChange={(e) => {
+                  setIngredients(e.target.value)
+                  if (errors.ingredients) setErrors((s) => ({ ...s, ingredients: undefined }))
+                }}
                 rows={4}
                 className="mt-1 block w-full rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder={`200g spaghetti\n100g pancetta\n2 large eggs`}
               />
+              {errors.ingredients && <div className="text-red-600 text-sm mt-1">{errors.ingredients}</div>}
             </div>
 
             <div>
@@ -87,11 +98,15 @@ export default function AddRecipeForm() {
               </div>
               <textarea
                 value={instructions}
-                onChange={(e) => setInstructions(e.target.value)}
+                onChange={(e) => {
+                  setInstructions(e.target.value)
+                  if (errors.instructions) setErrors((s) => ({ ...s, instructions: undefined }))
+                }}
                 rows={6}
                 className="mt-1 block w-full rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder={`Boil pasta until al dente.\nFry pancetta until crispy.`}
               />
+              {errors.instructions && <div className="text-red-600 text-sm mt-1">{errors.instructions}</div>}
             </div>
 
             <div className="flex items-center justify-end space-x-3">
