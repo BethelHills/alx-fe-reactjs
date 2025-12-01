@@ -38,10 +38,16 @@ export default function HomePage() {
 
         <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {recipes.map((r) => (
-            <article key={r.id} className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
-              <img src={r.image} alt={r.title} className="w-full h-40 object-cover" />
+            <article
+              key={r.id}
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500"
+              aria-labelledby={`recipe-${r.id}`}
+            >
+              <div className="w-full h-48 sm:h-40 md:h-48 lg:h-40 overflow-hidden">
+                <img src={r.image} alt={r.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+              </div>
               <div className="p-4">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{r.title}</h2>
+                <h2 id={`recipe-${r.id}`} className="text-lg font-semibold text-gray-900 dark:text-white">{r.title}</h2>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">{r.summary}</p>
                 <div className="mt-4 flex items-center justify-between">
                   <a href="#" className="text-blue-600 hover:underline">View</a>
