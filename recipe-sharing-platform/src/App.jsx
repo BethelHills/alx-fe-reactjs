@@ -28,6 +28,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      {/* Visual test for Tailwind - should appear blue if Tailwind is active */}
+      <div className="mt-6 p-4 bg-white/5 rounded text-blue-500 font-semibold">
+        Tailwind visual test: this text should be blue (text-blue-500)
+      </div>
     </>
   )
 }
