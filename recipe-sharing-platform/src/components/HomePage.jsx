@@ -11,7 +11,9 @@ export default function HomePage() {
       .then((r) => r.json())
       .then((data) => {
         if (!mounted) return
-        setRecipes(data)
+  // merge local user-submitted recipes (from localStorage) with base data
+  const user = JSON.parse(localStorage.getItem('userRecipes') || '[]')
+  setRecipes([...user, ...data])
       })
       .catch(() => setRecipes([]))
       .finally(() => mounted && setLoading(false))
