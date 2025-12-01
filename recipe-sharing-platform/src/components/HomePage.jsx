@@ -1,0 +1,57 @@
+import { useEffect, useState } from 'react'
+
+export default function HomePage() {
+  const [recipes, setRecipes] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let mounted = true
+    fetch('/src/data.json')
+      .then((r) => r.json())
+      .then((data) => {
+        if (!mounted) return
+        setRecipes(data)
+      })
+      .catch(() => setRecipes([]))
+      .finally(() => mounted && setLoading(false))
+
+    return () => {
+      mounted = false
+    }
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-gray-300">Loading recipes…</div>
+      </div>
+    )
+  }
+
+  return (
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+      <div className="max-w-6xl mx-auto">
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Recipe Sharing Platform</h1>
+          <p className="text-gray-600 dark:text-gray-300 mt-2">Browse and discover community recipes.</p>
+        </header>
+
+        <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {recipes.map((r) => (
+            <article key={r.id} className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+              <img src={r.image} alt={r.title} className="w-full h-40 object-cover" />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{r.title}</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">{r.summary}</p>
+                <div className="mt-4 flex items-center justify-between">
+                  <a href="#" className="text-blue-600 hover:underline">View</a>
+                  <button className="text-sm px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Save</button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+    </main>
+  )
+}
