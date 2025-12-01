@@ -36,17 +36,17 @@ export default function HomePage() {
           <p className="text-gray-600 dark:text-gray-300 mt-2">Browse and discover community recipes.</p>
         </header>
 
-        <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
           {recipes.map((r) => (
             <article
               key={r.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 flex flex-col"
               aria-labelledby={`recipe-${r.id}`}
             >
-              <div className="w-full h-48 sm:h-40 md:h-48 lg:h-40 overflow-hidden">
+              <div className="w-full h-48 sm:h-48 md:h-40 lg:h-40 overflow-hidden">
                 <img src={r.image} alt={r.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
               </div>
-              <div className="p-4">
+              <div className="p-4 flex-1 flex flex-col">
                 <h2 id={`recipe-${r.id}`} className="text-lg font-semibold text-gray-900 dark:text-white">{r.title}</h2>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">{r.summary}</p>
                 <div className="mt-4 flex items-center justify-between">
