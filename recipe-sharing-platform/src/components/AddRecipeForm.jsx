@@ -10,7 +10,9 @@ export default function AddRecipeForm() {
 
   function validate() {
     if (!title.trim()) return 'Title is required.'
-    if (!ingredients.trim()) return 'Please provide at least one ingredient.'
+  const ings = ingredients.split('\n').map((s) => s.trim()).filter(Boolean)
+  if (ings.length === 0) return 'Please provide at least one ingredient.'
+  if (ings.length < 2) return 'Please provide at least two ingredients.'
     if (!instructions.trim()) return 'Please provide at least one instruction step.'
     return null
   }
@@ -23,13 +25,16 @@ export default function AddRecipeForm() {
       return
     }
 
+    const parsedIngredients = ingredients.split('\n').map((s) => s.trim()).filter(Boolean)
+    const parsedInstructions = instructions.split('\n').map((s) => s.trim()).filter(Boolean)
+
     const newRecipe = {
       id: Date.now(),
       title: title.trim(),
-      summary: ingredients.split('\n')[0] || '',
+      summary: parsedIngredients[0] || '',
       image: 'https://via.placeholder.com/300x200.png?text=New+Recipe',
-      ingredients: ingredients.split('\n').map((s) => s.trim()).filter(Boolean),
-      instructions: instructions.split('\n').map((s) => s.trim()).filter(Boolean),
+      ingredients: parsedIngredients,
+      instructions: parsedInstructions,
     }
 
     try {
