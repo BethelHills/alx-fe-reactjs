@@ -34,7 +34,8 @@ export default function AddRecipeForm() {
       summary: parsedIngredients[0] || '',
       image: 'https://via.placeholder.com/300x200.png?text=New+Recipe',
       ingredients: parsedIngredients,
-      instructions: parsedInstructions,
+  instructions: parsedInstructions,
+  steps: parsedInstructions,
     }
 
     try {
