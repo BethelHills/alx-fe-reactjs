@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link, Outlet, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
@@ -8,11 +8,7 @@ import ProfileDetails from './pages/ProfileDetails'
 import ProfileSettings from './pages/ProfileSettings'
 import UserProfile from './pages/UserProfile'
 
-// simple fake auth
-let isAuthenticated = false
-export function requireAuth(component) {
-  return isAuthenticated ? component : <Navigate to="/login" replace />
-}
+import ProtectedRoute from './ProtectedRoute'
 
 export default function App() {
   return (
@@ -23,7 +19,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={requireAuth(<Dashboard />)}>
+  <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
           <Route path="profile" element={<Profile />}>
             <Route index element={<ProfileDetails />} />
             <Route path="settings" element={<ProfileSettings />} />
