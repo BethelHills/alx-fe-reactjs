@@ -5,6 +5,10 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import PostsComponent from '../alx-react-app/src/components/PostsComponent'
+
+const queryClient = new QueryClient()
 
 function App() {
   const appStyle = {
@@ -22,20 +26,24 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <div style={appStyle}>
-        <Navbar />
-        <div style={containerStyle}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <div style={appStyle}>
+          <Navbar />
+          <div style={containerStyle}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </div>
+          <hr style={{ marginTop: 18 }} />
+          <PostsComponent />
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

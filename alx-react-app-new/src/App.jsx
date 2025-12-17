@@ -8,6 +8,10 @@ import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile'
 import Counter from './components/Counter'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import PostsComponent from './components/PostsComponent'
+
+const queryClient = new QueryClient()
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,12 +31,15 @@ function App() {
   };
 
   return (
-    <div style={appWrapper}>
-      <WelcomeMessage />
-      <Header />
-      <MainContent />
-  <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-  <Counter />
+    <QueryClientProvider client={queryClient}>
+  <div style={appWrapper}>
+        <WelcomeMessage />
+        <Header />
+        <MainContent />
+        <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+        <Counter />
+        <hr style={{margin: '24px 0'}} />
+        <PostsComponent />
 
       <div style={logosRow}>
         <a href="https://vite.dev" target="_blank" rel="noreferrer">
@@ -58,6 +65,7 @@ function App() {
       </p>
       <Footer />
     </div>
+    </QueryClientProvider>
   )
 }
 

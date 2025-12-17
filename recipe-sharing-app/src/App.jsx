@@ -6,6 +6,10 @@ import RecipeDetails from './components/RecipeDetails'
 import SearchBar from './components/SearchBar'
 import FavoritesList from './components/FavoritesList'
 import RecommendationsList from './components/RecommendationsList'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import PostsComponent from '../alx-react-app/src/components/PostsComponent'
+
+const queryClient = new QueryClient()
 
 /**
  * Main App Component
@@ -38,8 +42,9 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <div style={containerStyle}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <div style={containerStyle}>
         <nav style={navStyle}>
           <Link to="/" style={linkStyle}>Home</Link>
           <Link to="/favorites" style={linkStyle}>Favorites</Link>
@@ -58,8 +63,11 @@ function App() {
           <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/recommendations" element={<RecommendationsList />} />
         </Routes>
+        <hr style={{ marginTop: 18 }} />
+        <PostsComponent />
       </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 
