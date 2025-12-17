@@ -4,6 +4,9 @@ import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
 import Post from './pages/Post'
 import Login from './pages/Login'
+import ProfileDetails from './pages/ProfileDetails'
+import ProfileSettings from './pages/ProfileSettings'
+import UserProfile from './pages/UserProfile'
 
 // simple fake auth
 let isAuthenticated = false
@@ -21,9 +24,13 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={requireAuth(<Dashboard />)}>
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<Profile />}>
+            <Route index element={<ProfileDetails />} />
+            <Route path="settings" element={<ProfileSettings />} />
+          </Route>
         </Route>
         <Route path="/posts/:id" element={<Post />} />
+        <Route path="/users/:username" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   )
