@@ -14,6 +14,7 @@ export default function PostsComponent() {
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading posts</p>;
+  if (!data) return <p>No data available</p>;
 
   return (
     <div>
