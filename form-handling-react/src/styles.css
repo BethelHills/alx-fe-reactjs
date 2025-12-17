@@ -1,0 +1,8 @@
+body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; padding: 0; }
+.container { padding: 20px; }
+.nav { display: flex; gap: 12px; margin-bottom: 20px }
+.card { max-width: 600px; padding: 16px; border: 1px solid #e5e7eb; border-radius: 8px }
+.card label { display: block; margin-top: 8px }
+.card input { width: 100%; padding: 8px; margin-top: 4px }
+.notice { margin-top: 12px; color: green }
+.error { color: red }
